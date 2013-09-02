@@ -1,0 +1,2 @@
+var FRAME_RATE = 40,
+	READY_TO_DRAW;

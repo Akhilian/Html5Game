@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>CrazyGame</title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	
+    	<link rel="stylesheet" type="text/css" href="css/game.css" />
+    	<link rel="stylesheet" type="text/css" href="css/character.css" />
+    	<link rel="stylesheet" type="text/css" href="css/hud.css" />
+
+	</head>
+
+	<body>
+		<div class="hud hud-right">
+			<img src="assets/hud/heartFull.png" width="30px" />
+			<img src="assets/hud/heartHalf.png" width="30px" />
+			<img src="assets/hud/heartEmpty.png" width="30px" />
+		</div>
+		
+		<div class="hud hud-left">
+		</div>
+		
+		<canvas id="map" height="400">
+		</canvas>
+		
+	</body>
+	
+
+		
+	<script src="js/JQuery.js"></script>
+
+	<div id="javascript"></div>
+
+	<script src="js/game.js"></script>
+			
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+		
+			console.log('Document loaded');	
+			
+			var Game = new CrazyGame(1);
+			Game.initMap();
+			Game.setCharacters();
+			Game.start();
+		
+		});
+
+
+	</script>
+	
+</html>

@@ -1,0 +1,149 @@
+.char {
+	position: absolute;
+	width: 70px;
+	height: 94px;
+}
+
+/************************************************************************************************
+	BOC
+************************************************************************************************/
+
+.char.boc.walk1 {
+	background-image: url('../assets/character/boc/walk01.png');
+}
+
+.char.boc.walk2 {
+	background-image: url('../assets/character/boc/walk02.png');
+}
+
+.char.boc.walk3 {
+	background-image: url('../assets/character/boc/walk03.png');
+}
+
+.char.boc.walk4 {
+	background-image: url('../assets/character/boc/walk04.png');
+}
+
+.char.boc.walk5 {
+	background-image: url('../assets/character/boc/walk05.png');
+}
+
+.char.boc.walk6 {
+	background-image: url('../assets/character/boc/walk06.png');
+}
+
+.char.boc.walk7 {
+	background-image: url('../assets/character/boc/walk07.png');
+}
+
+.char.boc.walk8 {
+	background-image: url('../assets/character/boc/walk08.png');
+}
+
+.char.boc.walk9 {
+	background-image: url('../assets/character/boc/walk09.png');
+}
+
+.char.boc.walk10 {
+	background-image: url('../assets/character/boc/walk10.png');
+}
+
+.char.boc.walk11 {
+	background-image: url('../assets/character/boc/walk11.png');
+}
+
+/************************************************************************************************
+	BOUBOU
+************************************************************************************************/
+
+.char.boubou.walk1 {
+	background-image: url('../assets/character/boubou/walk01.png');
+}
+
+.char.boubou.walk2 {
+	background-image: url('../assets/character/boubou/walk02.png');
+}
+
+.char.boubou.walk3 {
+	background-image: url('../assets/character/boubou/walk03.png');
+}
+
+.char.boubou.walk4 {
+	background-image: url('../assets/character/boubou/walk04.png');
+}
+
+.char.boubou.walk5 {
+	background-image: url('../assets/character/boubou/walk05.png');
+}
+
+.char.boubou.walk6 {
+	background-image: url('../assets/character/boubou/walk06.png');
+}
+
+.char.boubou.walk7 {
+	background-image: url('../assets/character/boubou/walk07.png');
+}
+
+.char.boubou.walk8 {
+	background-image: url('../assets/character/boubou/walk08.png');
+}
+
+.char.boubou.walk9 {
+	background-image: url('../assets/character/boubou/walk09.png');
+}
+
+.char.boubou.walk10 {
+	background-image: url('../assets/character/boubou/walk10.png');
+}
+
+.char.boubou.walk11 {
+	background-image: url('../assets/character/boubou/walk11.png');
+}
+
+/************************************************************************************************
+	MITCH
+************************************************************************************************/
+
+.char.mitch.walk1 {
+	background-image: url('../assets/character/mitch/walk01.png');
+}
+
+.char.mitch.walk2 {
+	background-image: url('../assets/character/mitch/walk02.png');
+}
+
+.char.mitch.walk3 {
+	background-image: url('../assets/character/mitch/walk03.png');
+}
+
+.char.mitch.walk4 {
+	background-image: url('../assets/character/mitch/walk04.png');
+}
+
+.char.mitch.walk5 {
+	background-image: url('../assets/character/mitch/walk05.png');
+}
+
+.char.mitch.walk6 {
+	background-image: url('../assets/character/mitch/walk06.png');
+}
+
+.char.mitch.walk7 {
+	background-image: url('../assets/character/mitch/walk07.png');
+}
+
+.char.mitch.walk8 {
+	background-image: url('../assets/character/mitch/walk08.png');
+}
+
+.char.mitch.walk9 {
+	background-image: url('../assets/character/mitch/walk09.png');
+}
+
+.char.mitch.walk10 {
+	background-image: url('../assets/character/mitch/walk10.png');
+}
+
+.char.mitch.walk11 {
+	background-image: url('../assets/character/mitch/walk11.png');
+}

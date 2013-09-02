@@ -1,0 +1,126 @@
+body {
+	background-color: black;
+	background-image: url('../assets/bg.png');
+	margin: 0;
+	
+	overflow: hidden;	
+}
+
+#map {}
+
+/************************************************************************************************
+*************************************   TILES  **************************************************
+*************************************************************************************************/
+
+.assets {
+	display: none;
+}
+
+.tile {
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	
+	display: block;
+}
+
+/*img.ctile {
+	width: 70px;
+	height: 70px;
+}*/
+
+/**
+	GRASS
+**/
+
+.tile.grassMid {
+	background-image: url('../assets/tile/grassMid.png');
+}
+
+.tile.grassLeft {
+	background-image: url('../assets/tile/grassLeft.png');
+}
+
+.tile.grassRight {
+	background-image: url('../assets/tile/grassRight.png');
+}
+
+.tile.grassCenter {
+	background-image: url('../assets/tile/grassCenter.png');
+}
+
+.tile.grassCliffRight {
+	background-image: url('../assets/tile/grassCliffRight.png');
+}
+
+.tile.grassCliffRightAlt {
+	background-image: url('../assets/tile/grassCliffRightAlt.png');
+}
+
+.tile.grassCliffLeft {
+	background-image: url('../assets/tile/grassCliffLeft.png');
+}
+
+.tile.dirtLedgeRight {
+	background-image: url('../assets/tile/dirtLedgeRight.png');
+}
+
+.tile.dirtLedgeRight {
+	background-image: url('../assets/tile/dirtLedgeRight.png');
+}
+
+/************************************************************************************************
+	WATER
+************************************************************************************************/
+
+.tile.liquidWater {
+	background-image: url('../assets/tile/liquidWater.png');
+}
+
+.tile.liquidWaterTop_mid {
+	background-image: url('../assets/tile/liquidWaterTop_mid.png');
+}
+
+/************************************************************************************************
+	CLOUD
+************************************************************************************************/
+
+.tile.cloud1 {
+	background-image: url('../assets/item/cloud1.png');
+	width: 128px;
+	height: 71px;
+}
+
+.tile.cloud2 {
+	background-image: url('../assets/item/cloud2.png');
+	width: 129px;
+	height: 71px;
+}
+
+.tile.cloud3 {
+	background-image: url('../assets/item/cloud3.png');
+	width: 129px;
+	height: 71px;
+
+}
+
+/************************************************************************************************
+	MISCELLANOUS
+************************************************************************************************/
+
+.tile.fence {
+	background-image: url('../assets/tile/fence.png');
+}
+
+.tile.mushroomBrown {
+	background-image: url('../assets/tile/mushroomBrown.png');
+}
+
+.tile.mushroomRed {
+	background-image: url('../assets/tile/mushroomRed.png');
+}
+
+.tile.boxAlt {
+	background-image: url('../assets/tile/boxAlt.png');
+}
+
