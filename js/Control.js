@@ -1,41 +1,41 @@
 include('animation/Renderer');
 
-function ControlManager(character, m) {
+function ControlManager(gameInstance) {
 
-	this.character = character;
-	this.map = m;
+	this.game = gameInstance;
 	
 	this.start = function() {
 	
-		Renderer.start(this.character, this.map);
+		Renderer.start(this.game.character, this.game.map);
 	
-		$('body').keydown(function(event) {
-			
+		var game = this.game;
+	
+		$('body').bind('keydown', game, function(event){
+		
 			// Move to the right
 			if(event.which == 39) {
-				character.moveRight();
+				game.character.moveRight();
 			}
 			else if(event.which == 37) {
-				character.moveLeft();
+				game.character.moveLeft();
 			}
 			else if(event.which == 32) {
-				character.jump();
+				game.character.jump();
 			}
-				
-			
-		});
 		
-		$('body').keyup(function(event) {
+		});
+	
+		$('body').bind('keyup', game, function(event){
 			
 			// Move to the right
 			if(event.which == 39) {
-				character.stop();
+//				game.character.stop();
 			}
 			else if(event.which == 37) {
-				character.stop();
+				game.character.stop();
 			}
 			else if(event.which == 27)
-				this.map.drawMenu();
+				map.drawMenu();
 			
 		});
 	
