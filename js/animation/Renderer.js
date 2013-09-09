@@ -18,14 +18,18 @@ if ( !window.requestAnimationFrame ) {
 
 var Renderer = {
 
+	/**
+	*	Draw the canvas.
+	*/
 	start : function(character, map) {
 		
-		function t() {
+		function render() {
+			map.clean();
 			character.move();
 			map.draw();
 		}
 		
-		var i = window.setInterval(t, 1000 / FRAME_RATE);
+		var i = window.setInterval(render, 1000 / FRAME_RATE);
 
 	}
 	
