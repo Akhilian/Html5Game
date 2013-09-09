@@ -1,21 +1,32 @@
-var TileTools = {
-
-	create : function(type, x, y) {
-		return new Tile(type, x, y);
-	}
-
-}
-
-function Tile(img, x, y) {
+function Tile(img, canvas) {
 	
 	// Attributs
-	this.type = img;
-	this.posX = x;
-	this.posY = y;
-	
+	this.imgSrc = img;
+
 	// Methodes
-	this.setPosition = function(x, y) {
-		this.posX = x;
-		this.posY = y;
+	this.drawAt = function(x, y, convert) {
+
+		var diffY = CANVAS.height(),
+			height = CANVAS.height(),
+			width = CANVAS.width();
+
+		if(convert == undefined){
+			
+			CONTEXT.drawImage(
+				this.imgSrc,
+				70 * x,
+				diffY - 70 * ( y + 1 )
+			);
+		}
+		else
+		{
+			CONTEXT.drawImage(
+				this.imgSrc,
+				x,
+				diffY - y - (1 * 94)
+			);
+		}
+
+		
 	}
 }

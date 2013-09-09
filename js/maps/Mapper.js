@@ -1,5 +1,4 @@
-include('maps/Tile');
-include('maps/Tileset');
+
 
 var Mapper = {
 
@@ -78,18 +77,28 @@ var Mapper = {
 	
 	checkVoidBellow : function (posX, posY, lvl){
 		return this.checkCollision(posX, posY - 1, lvl);
-	}
-	
+	}	
 };
 
+/**
+*	
+*/
 function Map() {
 
+	// Characters
+	this.characters = new Array();
+
+	// Map Data : 
 	this.mapRaw;
 
-	this.settings = new Array();
-	
+	// Tile's loader
 	this.tilesToLoad = 0;
 	this.tilesLoaded = 0;
+
+	// Background and decor tiles
+	this.settings = new Array();
+	
+	// Block tiles
 	this.tiles = new Array();
 	
 	this.addTile = function(tile) {
@@ -103,8 +112,7 @@ function Map() {
 	this.setRawData = function(data) {
 
 		this.mapRaw = data;
-		
-				
+
 		for(var i = 0; i < this.mapRaw.field.length ; i++) {
 			
 			var item = this.mapRaw.field[i];
@@ -115,9 +123,27 @@ function Map() {
 				img.src = 'assets/tile/' + item.type + '.png';
 				img.onload = this.tileLoaded.bind(this);
 				
-				this.tiles[item.type] = img;
+				this.tiles[item.type] = new Tile(img);
 				this.tiles.length += 1;
 				this.tilesToLoad += 1;
+			}
+			
+		}
+		
+		for(var i = 0; i < this.mapRaw.setting.length ; i++) {
+			
+			var item = this.mapRaw.setting[i];
+			
+			if( ! this.tiles[item.type]) {
+			
+				var img = new Image();
+				img.src = 'assets/tile/' + item.type + '.png';
+				img.onload = this.tileLoaded.bind(this);
+				
+				this.tiles[item.type] = new Tile(img);
+				this.tiles.length += 1;
+				this.tilesToLoad += 1;
+
 			}
 			
 		}
@@ -132,34 +158,40 @@ function Map() {
 	}
 	
 	this.draw = function() {
-	
-		var canvas = $("#map");
-		var context = canvas[0].getContext('2d');
 		
-		var diffY = canvas.height(),
-			height = canvas.height(),
-			width = canvas.width();
+		var diffY = CANVAS.height(),
+			height = CANVAS.height(),
+			width = CANVAS.width();
 		
 		for(var i = 0; i < this.mapRaw.field.length; i++) {
 			
 			var item = this.mapRaw.field[i],
-				img = this.tiles[item.type];
+				imgTile = this.tiles[item.type];
 
-				context.drawImage(img, 70*item.x, diffY - 70* (item.y + 1));
+				imgTile.drawAt(item.x, item.y);
+		}
 		
-		}	
-		
-		/*
-		$.each( this.mapRaw.setting , function(key, tile) {
-		
-			var img=document.getElementById(tile.type);
-			context.drawImage(img , ( 70 * tile.x ) , $('#map').height() - ( 70 * (tile.y + 1) ) );
+		for(var i = 0; i < this.mapRaw.setting.length; i++) {
 			
-		});*/
-		
+			var item = this.mapRaw.setting[i],
+				imgTile = this.tiles[item.type];
+
+				imgTile.drawAt(item.x, item.y);
+		}
+
+		this.characters[0].draw();
+
 	}
 	
 	this.drawMenu = function() {
 		console.log('On affiche le menu');
 	}
+}
+
+Map.prototype.setCharacters = function(characters) {
+	this.characters = characters;
+};
+
+Map.prototype.clean = function() {
+	CONTEXT.clearRect(0,0, CANVAS.width(), CANVAS.height());
 }
