@@ -5,7 +5,6 @@ function Character(game) {
 	// Attributs
 	this.name = 'mitch';
 	this.walkingStep = 1;
-	this.maxWalkingStep = 11;
 	
 	this.game = game;
 	
@@ -14,45 +13,34 @@ function Character(game) {
 	
 	this.speedX = 0;
 	this.speedY = 'none';
-	
-	this.MAX_SPEED = 30;
 
-	// Methodes
-	this.nextWalkingStep = function() {
-	
-		$('#' + this.name).removeClass('walk' + this.walkingStep);
-	
-		if(this.walkingStep == this.maxWalkingStep)
-			this.walkingStep = 1;		
-		else
-			this.walkingStep++;
+	this.characterTile = initTile(this);
 
-		$('#' + this.name).addClass('walk' + this.walkingStep);
-			
+	// Constructor
+	function initTile(character) {
+
+		var img = new Image();
+			img.src = 'assets/character/' + character.name + '/walk01.png';
+//			img.onload = tileLoaded.bind(character);
+
+			return new Tile(img);
 	}
+
 	
 	this.setPosition = function(x, y) {
 		this.posX = x;
 		this.posY = y;
-		
-		$('#' + this.name).css("left", 	this.posX );
-		$('#' + this.name).css('bottom',	this.posY );
 	}
 	
 	this.moveByY = function(y) {
 		this.posY += y;
-		$('#' + this.name).css('bottom',	this.posY	 );
 	}
 	
 	this.moveByX = function(x) {
 		this.posX += x;
-		$('#' + this.name).css('left',	this.posX	 );
 	}
 	
 	this.drawChar = function() {
-	
-		$('body').append('<div id="' + this.name + '"' +
-			'class="char ' + this.name + ' walk1" style="left:' + this.posX +  'px; bottom:' + this.posY + 'px;">');
 	}
 	
 	this.jump = function() {
@@ -62,11 +50,11 @@ function Character(game) {
 	}
 	
 	this.moveRight = function() {
-		this.speedX = 10;
+		this.speedX = 20;
 	}
 
 	this.moveLeft = function() {
-		this.speedX = -5;
+		this.speedX = -10;
 	}
 	
 	this.stop = function() {
@@ -102,9 +90,12 @@ function Character(game) {
 			}
 			
 		}
-		
+
+
+
 		if( this.speedX != 0)
 		{
+			
 			if ( this.posX + this.speedX > 0 )
 			{
 				if ( Mapper.checkCollision( ( this.posX + this.speedX ), this.posY, this.game.lvl) == false )
@@ -113,18 +104,17 @@ function Character(game) {
 					// We check if there is some falling risk
 					if( Mapper.checkVoidBellow( ( this.posX + this.speedX ), this.posY, this.game.lvl ) == false ){
 
-//						console.log(this.posX + this.speedX);
-//						console.log(this.posY);
-
 						// If there is no speedY yet, we start the fall
 						if( this.speedY == 'none' )
 							this.speedY = -1;
+
+						var slowing = Math.ceil(8 / 3);
+						console.log(slowing);
 
 					
 					}
 				
 					this.moveByX(this.speedX);
-					this.nextWalkingStep();
 				}
 			}
 			else
@@ -139,4 +129,8 @@ function Character(game) {
 		}
 	}
 
+}
+
+Character.prototype.draw = function() {
+	this.characterTile.drawAt(this.posX, this.posY, true);
 }
