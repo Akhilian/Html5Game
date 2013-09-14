@@ -48,7 +48,7 @@ var Mapper = {
 	},
 	
 	checkCollision : function(posX, posY, lvl) {
-	
+
 		var charLeft = posX, charRight = posX + 69;
 		var charBottom = posY, charTop = posX + 96;
 	
@@ -59,8 +59,13 @@ var Mapper = {
 		
 		$.each(field, function(k, v) {
 
-			var r2Left = (v.x * 70), r2Right = (v.x * 70) + 69;
-			var r2Bottom = (v.y * 70), r2Top = (v.y * 70) + 69;
+//			if(a.max.x < b.min.x or a.min.x > b.max.x) return false
+//			if(a.max.y < b.min.y or a.min.y > b.max.y) return false
+
+			var 	r2Left = (v.x * TILE_SIZE),
+					r2Right = (v.x * TILE_SIZE) + 69,
+					r2Bottom = (v.y * TILE_SIZE),
+					r2Top = (v.y * TILE_SIZE) + 69;
 
 			if( ! ( charRight < r2Left || charLeft > r2Right || charTop < r2Bottom || charBottom > r2Top ) )
 			{

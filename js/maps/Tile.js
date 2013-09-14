@@ -14,8 +14,8 @@ function Tile(img, canvas) {
 			
 			CONTEXT.drawImage(
 				this.imgSrc,
-				70 * x,
-				diffY - 70 * ( y + 1 )
+				TILE_SIZE * x,
+				diffY - TILE_SIZE * ( y + 1 )
 			);
 		}
 		else
