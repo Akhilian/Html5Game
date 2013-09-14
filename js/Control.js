@@ -29,7 +29,7 @@ function ControlManager(gameInstance) {
 			
 			// Move to the right
 			if(event.which == 39) {
-//				game.character.stop();
+				//game.character.stop();
 			}
 			else if(event.which == 37) {
 				game.character.stop();
