@@ -1,3 +1,5 @@
+include('FpsMonitor');
+
 if ( !window.requestAnimationFrame ) {
 
 	window.requestAnimationFrame = ( function() {
@@ -22,14 +24,28 @@ var Renderer = {
 	*	Draw the canvas.
 	*/
 	start : function(character, map) {
+
+		FpsMonitor.init();
 		
+		// Bind Renderer object to the render function.
+		// It allows manipulation of the fps monitor
+		var rend = render.bind(this);
+		window.requestAnimationFrame(rend);
+
 		function render() {
+
+			FpsMonitor.begin();
+
+			// Clean and render the game
 			map.clean();
 			character.move();
 			map.draw();
-		}
-		
-		var i = window.setInterval(render, 1000 / FRAME_RATE);
+
+			FpsMonitor.end();
+
+			var rend = render.bind(this);
+			window.requestAnimationFrame(rend);
+		};
 
 	}
 	
