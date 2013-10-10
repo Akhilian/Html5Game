@@ -1,0 +1,339 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"vie",
+				"viewport"
+			],
+			[
+				"vi",
+				"viewport"
+			],
+			[
+				"view",
+				"viewPort"
+			],
+			[
+				"viewp",
+				"Viewport"
+			],
+			[
+				"pos",
+				"posX"
+			],
+			[
+				"check",
+				"checkCollision"
+			],
+			[
+				"ma",
+				"maxWidth"
+			],
+			[
+				"wo",
+				"worldDimension"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"map",
+				"mapRaw"
+			],
+			[
+				"stop",
+				"stoppingStep"
+			],
+			[
+				"wal",
+				"walkingStep"
+			],
+			[
+				"cha",
+				"character"
+			],
+			[
+				"img",
+				"imgName"
+			],
+			[
+				"im",
+				"imgName"
+			],
+			[
+				"til",
+				"tileLoaded"
+			],
+			[
+				"wa",
+				"walkingStep"
+			],
+			[
+				"spee",
+				"speedX"
+			],
+			[
+				"spe",
+				"speedY"
+			],
+			[
+				"re",
+				"rend"
+			],
+			[
+				"rend",
+				"render"
+			],
+			[
+				"moveB",
+				"moveByX"
+			],
+			[
+				"sp",
+				"speedX"
+			],
+			[
+				"slo",
+				"slowing"
+			],
+			[
+				"mo",
+				"moveByX"
+			],
+			[
+				"CAN",
+				"CANVAS"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"char",
+				"characterTile"
+			],
+			[
+				"c",
+				"canvas"
+			],
+			[
+				"t",
+				"this"
+			],
+			[
+				"Til",
+				"Tile"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/Html5Game.sublime-project",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/Control.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/game.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Character.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/json/map1.json",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Mapper.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Viewport.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Camera.js",
+		"/Applications/MAMP/htdocs/CLIENTS/Didier.His/index.html",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Renderer.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Tile.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/CONFIG.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/index.html",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Position.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Life.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/README.md",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/FpsMonitor.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/JQuery.js",
+		"/Users/Alwin/Desktop/Rapport2A.pdf",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/fpsMonitor.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/fpsMonitor",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Tileset.js",
+		"/Users/Alwin/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Applications/MAMP/htdocs/Personnel/TPE_STAGE/application/config/database.php",
+		"/Applications/MAMP/htdocs/Personnel/TPE_STAGE/application/controllers/account.php",
+		"/Users/Alwin/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"viewPort",
+			"viewport",
+			"width",
+			"viewPort",
+			"Viewport.getInstance()",
+			"came",
+			"Camer",
+			"checkCollision",
+			"length",
+			"lenght",
+			"consol",
+			"console",
+			"cons",
+			"consol",
+			"loadMap",
+			"checkColl",
+			"checkCol",
+			"checkColl",
+			"draw",
+			"map.dra",
+			"NUM_OF",
+			"draw",
+			"setPo",
+			"Position",
+			"diffY",
+			"posY",
+			"posX",
+			"draw",
+			"setPosition",
+			"setPosi",
+			"setPosition",
+			"checkVoid",
+			"conso",
+			"cons",
+			"draw",
+			"context",
+			"Tile(",
+			"Tile",
+			"setting",
+			"setCha",
+			"item",
+			"SPEED",
+			"MAX",
+			"MAX_SP",
+			"cons",
+			"consol",
+			"console.lo",
+			"drawImage",
+			"draw(",
+			"draw"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"viewport",
+			"Viewport.getInstance().viewPort",
+			"viewport"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Applications/MAMP/htdocs/Personnel/Html5Game/Html5Game.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 270.0,
+	"status_bar_visible": true
+}

@@ -1,13 +1,13 @@
-function Tile(img, canvas) {
+function Tile(img) {
 	
 	// Attributs
 	this.imgSrc = img;
+	this.tileIsLoaded = false;
 
 	// Methodes
 	this.drawAt = function(x, y, convert) {
 
-		var diffY = CANVAS.height(),
-			height = CANVAS.height(),
+		var height = CANVAS.height(),
 			width = CANVAS.width();
 
 		if(convert == undefined){
@@ -15,18 +15,23 @@ function Tile(img, canvas) {
 			CONTEXT.drawImage(
 				this.imgSrc,
 				TILE_SIZE * x,
-				diffY - TILE_SIZE * ( y + 1 )
+				height - TILE_SIZE * ( y )
 			);
+
 		}
 		else
 		{
 			CONTEXT.drawImage(
 				this.imgSrc,
 				x,
-				diffY - y - (1 * 94)
+				height - y - ( this.imgSrc.height )
 			);
 		}
 
 		
 	}
 }
+
+Tile.prototype.tileLoaded = function() {
+	this.tileIsLoaded = true;
+};

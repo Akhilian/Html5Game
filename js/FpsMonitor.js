@@ -16,7 +16,7 @@ var FpsMonitor = {
 
 	begin : function() {
 
-		if( DISPLAY_FPS_MONITOR)
+		if( DISPLAY_FPS_MONITOR )
 		{
 			if( this.fpsMonitor != undefined )
 				this.fpsMonitor.begin();
@@ -26,7 +26,14 @@ var FpsMonitor = {
 	},
 
 	end : function() {
-		this.fpsMonitor.end();
+
+		if( DISPLAY_FPS_MONITOR )
+		{
+			if ( this.fpsMonitor != undefined )
+				this.fpsMonitor.end();
+			else
+				throw "Please set up the monitor by calling FpsMonitor.init() first.";
+		}
 	}
 
 

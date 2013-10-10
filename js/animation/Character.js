@@ -8,58 +8,72 @@ function Character(game) {
 	
 	this.game = game;
 	
-	this.posX;
-	this.posY;
+	this.position;
 	
 	this.speedX = 0;
 	this.speedY = 'none';
-	this.slowing = false;
 
 	this.characterTile = initTile(this);
 
 	// Constructor
 	function initTile(character) {
 
-		var img = new Image();
-			img.src = 'assets/character/' + character.name + '/walk01.png';
-//			img.onload = tileLoaded.bind(character);
+		var tiles = [];
 
-			return new Tile(img);
+		for (var i = 1; i <= 11; i++) {
+
+			var imgName = "";
+
+			if( i < 10)
+				imgName = "walk0" + i;
+			else
+				imgName = "walk" + i;
+
+			var img = new Image();
+			img.src = 'assets/character/' + character.name + '/' + imgName + '.png';
+
+			tiles[i] = new Tile(img);
+
+			img.onload = tiles[i].tileLoaded();
+
+		}
+		
+		return tiles;
 	}
 
 	
 	this.setPosition = function(x, y) {
-		this.posX = x;
-		this.posY = y;
+		this.position = new Position(x, y);
 	}
 	
 	this.moveByY = function(y) {
-		this.posY += y;
+		this.position.y += y;
 	}
 	
 	this.moveByX = function(x) {
-		this.posX += x;
+		this.position.x += x;
 	}
-	
-	this.drawChar = function() {
-	}
-	
+		
 	this.jump = function() {
 		
 		if(this.speedY == 'none')
-			this.speedY = 100;
+			this.speedY = JUMP;
 	}
 	
 	this.moveRight = function() {
 
-		if(this.speedX < MAX_SPEED)
-			this.speedX += SPEED_X;
+ 		if( this.speedX >= 0 )
+			this.speedX = SPEED_X;
+		else
+			console.log('Impossible d\'avancer');
+
 	}
 
 	this.moveLeft = function() {
 
-		if( Math.abs(this.speedX) < MAX_SPEED)
-			this.speedX += - 1 * SPEED_X;
+		if( Math.abs(this.speedX) < MAX_SPEED && this.speedX <= 0 )
+			this.speedX = - 1 * SPEED_X;
+			
 	}
 
 	this.slow = function() {
@@ -68,11 +82,11 @@ function Character(game) {
 	
 	this.stop = function() {
 		this.speedX = 0;
+		this.stoppingStep();
 	}
 	
 	this.move = function() {
 
-	
 		// Vertical movement
 		if(this.speedY != 'none') {
 			
@@ -81,68 +95,64 @@ function Character(game) {
 				this.moveByY(this.speedY);
 			}
 			else if(this.speedY == 0) {
-				this.speedY = -1;
+				this.speedY = -1;	
 			}
 			else {
-			
-				if( Mapper.checkCollision(this.posX, this.posY + Math.ceil( GRAVITY_DOWN * this.speedY ), this.game.lvl) == false)
+
+				if( this.game.map.checkCollision(this.position.x, this.position.y + Math.ceil( GRAVITY_DOWN * this.speedY )) == false)
 				{					
 					this.speedY = Math.floor( GRAVITY_DOWN * this.speedY );
 					this.moveByY(this.speedY);
 				}
 				else
 				{
-					var tile = Mapper.checkCollision(this.posX, this.posY + Math.ceil( 1.15 * this.speedY ), this.game.lvl);
-					this.moveByY( ( ( tile.y + 1 ) * TILE_SIZE) - this.posY);
+					var tile = this.game.map.checkCollision(this.position.x, this.position.y + Math.ceil( 1.15 * this.speedY ));
+					this.moveByY( ( ( tile.y + 1 ) * TILE_SIZE) - this.position.y);
 					
 					this.speedY = 'none';
 				}
 			}
-			
-		}
-
-		if( this.speedX != 0 ) {
-
-			this.moveByX( this.speedX );
-
 		}
 
 
-/*
 		if( this.speedX != 0)
 		{
+			this.nextWalkingStep();
 
-			if( this.slowing == true ) {
-				this.speedX = Math.floor(this.speedX * 0.75);
+			if ( this.game.map.checkCollision( ( this.position.x + this.speedX), this.position.y, this.game.lvl ) == false )
+			{ 
+
+				this.moveByX(this.speedX);
 			}
 
-			this.moveByX(this.speedX);
-
-
-			if ( this.posX + this.speedX > 0 )
-			{
-				console.log(this.posX + this.speedX);
-
-				if ( Mapper.checkCollision( ( this.posX + this.speedX ), this.posX, this.game.lvl) == false )
-				{ 
-
-					//this.speedX = this.speedX * 0.75;
-//					this.moveByX(this.speedX);
-				}
-			}
-			else
-			{
-				this.stop();
-			}
+			if( this.speedY == 0 || this.speedY == 'none' )
+				if( this.game.map.checkVoidBelow( ( this.position.x + this.speedX ), this.position.y, this.game.lvl ) == true )
+					this.speedY =-1;
 
 		}
 		else
 			this.slowing = false;
-*/
+
 	}
 
 }
 
-Character.prototype.draw = function() {
-	this.characterTile.drawAt(this.posX, this.posY, true);
+Character.prototype.draw = function() {	
+
+	var vp = Viewport.getInstance();
+	this.characterTile[this.walkingStep].drawAt(this.position.x, this.position.y, true);
+}
+
+Character.prototype.stoppingStep = function() {
+	this.walkingStep = 1;
+}
+
+Character.prototype.jumpingStep = function() {
+}
+
+Character.prototype.nextWalkingStep = function(){
+	if( this.walkingStep < 11 )
+		this.walkingStep++;
+	else
+		this.walkingStep = 1;
 }

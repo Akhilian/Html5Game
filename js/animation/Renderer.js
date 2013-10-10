@@ -1,4 +1,6 @@
 include('FpsMonitor');
+include('maps/Viewport');
+include('animation/Camera');
 
 if ( !window.requestAnimationFrame ) {
 
@@ -18,35 +20,42 @@ if ( !window.requestAnimationFrame ) {
 
 }
 
-var Renderer = {
+function Renderer(character, map) {
 
-	/**
-	*	Draw the canvas.
-	*/
-	start : function(character, map) {
+	this.character = character;
+	this.map = map;
 
-		FpsMonitor.init();
+	this.camera = new Camera(map, character);
+
+}
+
+/**
+*	Draw the canvas.
+*/
+Renderer.prototype.start = function() {
+
+	FpsMonitor.init();
 		
-		// Bind Renderer object to the render function.
-		// It allows manipulation of the fps monitor
+	// Bind Renderer object to the render function.
+	// It allows manipulation of the fps monitor
+	var rend = render.bind(this);
+	window.requestAnimationFrame(rend);
+
+	function render() {
+
+		FpsMonitor.begin();
+
+		// Clean and render the game
+		this.map.clean();
+		this.character.move();
+		//this.map.draw();
+
+		this.camera.draw();
+
+		FpsMonitor.end();
+
 		var rend = render.bind(this);
 		window.requestAnimationFrame(rend);
+	};
 
-		function render() {
-
-			FpsMonitor.begin();
-
-			// Clean and render the game
-			map.clean();
-			character.move();
-			map.draw();
-
-			FpsMonitor.end();
-
-			var rend = render.bind(this);
-			window.requestAnimationFrame(rend);
-		};
-
-	}
-	
 }

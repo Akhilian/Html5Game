@@ -1,4 +1,5 @@
 include('CONFIG');
+include('maps/Position');
 include('maps/Tile');
 include('maps/Tileset');
 include('maps/Mapper');
@@ -14,8 +15,6 @@ function CrazyGame() {
 	this.lvl = 1;
 	this.map = null;
 	
-	this.tileSize = 70;
-	
 	this.character = null;
 	
 	// Methodes
@@ -29,7 +28,7 @@ function CrazyGame() {
 		var initPos = Mapper.getInitialPosition(this.lvl);
 		
 		this.character = new Character(this);
-		this.character.setPosition( this.tileSize * initPos.x, this.tileSize * initPos.y);
+		this.character.setPosition( TILE_SIZE * initPos.x, TILE_SIZE * initPos.y);
 
 		var chars = new Array();
 		chars.push(this.character);

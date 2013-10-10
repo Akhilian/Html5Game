@@ -1,5 +1,3 @@
-
-
 var Mapper = {
 
 	loadMap : function(lvl) {
@@ -47,47 +45,9 @@ var Mapper = {
 		return position;
 	},
 	
-	checkCollision : function(posX, posY, lvl) {
-
-		var charLeft = posX, charRight = posX + 69;
-		var charBottom = posY, charTop = posX + 96;
-	
-		var data = this.loadMap(lvl);
-		var field = data.field;
 		
-		var collision = false;
-		
-		$.each(field, function(k, v) {
-
-//			if(a.max.x < b.min.x or a.min.x > b.max.x) return false
-//			if(a.max.y < b.min.y or a.min.y > b.max.y) return false
-
-			var 	r2Left = (v.x * TILE_SIZE),
-					r2Right = (v.x * TILE_SIZE) + 69,
-					r2Bottom = (v.y * TILE_SIZE),
-					r2Top = (v.y * TILE_SIZE) + 69;
-
-			if( ! ( charRight < r2Left || charLeft > r2Right || charTop < r2Bottom || charBottom > r2Top ) )
-			{
-				collision = v;
-				return false;
-			}
-			else
-				collision = false;
-
-		});
-		
-		return collision;
-	},
-	
-	checkVoidBellow : function (posX, posY, lvl){
-		return this.checkCollision(posX, posY - 1, lvl);
-	}	
 };
 
-/**
-*	
-*/
 function Map() {
 
 	// Characters
@@ -105,6 +65,9 @@ function Map() {
 	
 	// Block tiles
 	this.tiles = new Array();
+
+	// World dimensions
+	this.world;
 	
 	this.addTile = function(tile) {
 		this.tiles.push(tile);
@@ -118,9 +81,17 @@ function Map() {
 
 		this.mapRaw = data;
 
+		var x = 0, y = 0;
+
 		for(var i = 0; i < this.mapRaw.field.length ; i++) {
 			
 			var item = this.mapRaw.field[i];
+
+			if( item.x > x )
+				x = item.x;
+
+			if( item.y > y )
+				y = item.y;
 			
 			if( ! this.tiles[item.type]) {
 			
@@ -138,6 +109,12 @@ function Map() {
 		for(var i = 0; i < this.mapRaw.setting.length ; i++) {
 			
 			var item = this.mapRaw.setting[i];
+
+			if( item.x > x )
+				x = item.x;
+
+			if( item.y > y )
+				y = item.y;
 			
 			if( ! this.tiles[item.type]) {
 			
@@ -150,7 +127,11 @@ function Map() {
 				this.tilesToLoad += 1;
 
 			}
-			
+		}
+
+		this.world = {
+			width : x,
+			height : y
 		}
 	}
 	
@@ -158,35 +139,10 @@ function Map() {
 		
 		this.tilesLoaded += 1;
 		
-		if(this.tilesLoaded == this.tilesToLoad)
-			this.draw();
+//		if(this.tilesLoaded == this.tilesToLoad)
+//			this.draw();
 	}
-	
-	this.draw = function() {
-		
-		var diffY = CANVAS.height(),
-			height = CANVAS.height(),
-			width = CANVAS.width();
-		
-		for(var i = 0; i < this.mapRaw.field.length; i++) {
-			
-			var item = this.mapRaw.field[i],
-				imgTile = this.tiles[item.type];
 
-				imgTile.drawAt(item.x, item.y);
-		}
-		
-		for(var i = 0; i < this.mapRaw.setting.length; i++) {
-			
-			var item = this.mapRaw.setting[i],
-				imgTile = this.tiles[item.type];
-
-				imgTile.drawAt(item.x, item.y);
-		}
-
-		this.characters[0].draw();
-
-	}
 	
 	this.drawMenu = function() {
 		console.log('On affiche le menu');
@@ -199,4 +155,40 @@ Map.prototype.setCharacters = function(characters) {
 
 Map.prototype.clean = function() {
 	CONTEXT.clearRect(0,0, CANVAS.width(), CANVAS.height());
+}
+
+Map.prototype.checkCollision = function(posX, posY) {
+
+		var vp =  Viewport.getInstance();
+
+		var charLeft = posX + vp.viewport.x, charRight = posX + 69 + vp.viewport.x;
+		var charBottom = posY + vp.viewport.y, charTop = posX + 96 + vp.viewport.y;
+	
+		var collision = false;
+		
+		$.each(this.mapRaw.field, function(k, item) {
+
+//			if(a.max.x < b.min.x or a.min.x > b.max.x) return false
+//			if(a.max.y < b.min.y or a.min.y > b.max.y) return false
+
+			var 	r2Left = (item.x * TILE_SIZE),
+					r2Right = (item.x * TILE_SIZE) + 69,
+					r2Bottom = (item.y * TILE_SIZE),
+					r2Top = (item.y * TILE_SIZE) + 69;
+
+			if( ! ( charRight < r2Left || charLeft > r2Right || charTop < r2Bottom || charBottom > r2Top ) )
+			{
+				collision = item;
+				return false;
+			}
+			else
+				collision = false;
+
+		});
+		
+		return collision;
+};
+
+Map.prototype.checkVoidBelow = function (posX, posY){
+	return ! this.checkCollision(posX, posY - 1);
 }

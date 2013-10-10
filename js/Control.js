@@ -3,11 +3,13 @@ include('animation/Renderer');
 function ControlManager(gameInstance) {
 
 	this.game = gameInstance;
+	this.renderer;
 	
 	this.start = function() {
 	
-		Renderer.start(this.game.character, this.game.map);
-	
+		this.renderer = new Renderer(this.game.character, this.game.map);
+		this.renderer.start();
+
 		var game = this.game;
 	
 		$('body').bind('keydown', game, function(event){
@@ -29,7 +31,7 @@ function ControlManager(gameInstance) {
 			
 			// Move to the right
 			if(event.which == 39) {
-				//game.character.stop();
+				game.character.stop();
 			}
 			else if(event.which == 37) {
 				game.character.stop();

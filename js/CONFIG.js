@@ -2,11 +2,6 @@
 	// Image per second
 var FRAME_RATE = 40,
 	
-	// Speed limit for characters
-	MAX_SPEED = 30,
-
-	SPEED_X = 10,
-
 	// Canvas to be drawn
 	CANVAS = $("#map"),
 
@@ -16,9 +11,21 @@ var FRAME_RATE = 40,
 	// Tile size
 	TILE_SIZE = 70,
 
+	// Should we display the FPS monitor ?
+	// Set to false in Production
+	DISPLAY_FPS_MONITOR = true,
+
+
+	//-------------------------------------------------------//
+	//--------------- CHARACTER CONFIGURATION ---------------//
+	//-------------------------------------------------------//
+
+	SPEED_X = 20,
+	JUMP = 50,
+	MAX_SPEED = 60,
+
 	// Gravity
 	GRAVITY_UP = 0.70,
-	GRAVITY_DOWN = 1.1,
+	GRAVITY_DOWN = 1.2,
 
-	DISPLAY_FPS_MONITOR = true;
-
+	MAX_HEALTH_POINTS = 6;
