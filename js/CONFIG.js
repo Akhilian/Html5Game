@@ -1,6 +1,11 @@
 define(['jquery'], function($) {
 
-	console.log($('#map').hide());
+	var canv2DContext,
+		canv = $('#map').each(function(index, element) {
+		canv2DContext = element.getContext('2d');
+	});
+
+	console.log();
 
 	return {
 			// Image per second
@@ -10,7 +15,7 @@ define(['jquery'], function($) {
 			CANVAS : $("#map"),
 
 			// Context
-			CONTEXT : CANVAS[0].getContext('2d'),
+			CONTEXT : canv2DContext,
 
 			// Tile size
 			TILE_SIZE : 70,
