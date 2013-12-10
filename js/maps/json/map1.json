@@ -3,8 +3,8 @@
 	"maxPlayers" : 1,
 	
 	"initialPosition" : {
-		"x" : 1,
-		"y" : 6
+		"x" : 3,
+		"y" : 3
 	},
 	
 	"field" : [

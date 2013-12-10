@@ -4,16 +4,20 @@
 		"selected_items":
 		[
 			[
-				"vie",
+				"im",
+				"imgSrc"
+			],
+			[
+				"view",
 				"viewport"
+			],
+			[
+				"vie",
+				"viewportInstance"
 			],
 			[
 				"vi",
 				"viewport"
-			],
-			[
-				"view",
-				"viewPort"
 			],
 			[
 				"viewp",
@@ -57,10 +61,6 @@
 			],
 			[
 				"img",
-				"imgName"
-			],
-			[
-				"im",
 				"imgName"
 			],
 			[
@@ -156,21 +156,28 @@
 	},
 	"file_history":
 	[
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/Html5Game.sublime-project",
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/Control.js",
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/game.js",
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Character.js",
+		"/Applications/MAMP/Apache/Personnel/Html5Game/js/animation/Camera.js",
+		"/Applications/MAMP/Apache/Personnel/Html5Game/js/animation/Renderer.js",
+		"/Applications/MAMP/Apache/Personnel/Html5Game/js/maps/Mapper.js",
+		"/Applications/MAMP/Apache/Personnel/Html5Game/js/animation/Character.js",
+		"/Applications/MAMP/Apache/Personnel/Html5Game/js/CONFIG.js",
 		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/json/map1.json",
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Mapper.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Tile.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Renderer.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Character.js",
 		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Viewport.js",
 		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Camera.js",
-		"/Applications/MAMP/htdocs/CLIENTS/Didier.His/index.html",
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Renderer.js",
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Tile.js",
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/CONFIG.js",
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/index.html",
-		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Position.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Mapper.js",
 		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/animation/Life.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/game.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/Stats.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/index.html",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/Html5Game.sublime-workspace",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/Html5Game.sublime-project",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/Control.js",
+		"/Applications/MAMP/htdocs/CLIENTS/Didier.His/index.html",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/CONFIG.js",
+		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/maps/Position.js",
 		"/Applications/MAMP/htdocs/Personnel/Html5Game/README.md",
 		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/FpsMonitor.js",
 		"/Applications/MAMP/htdocs/Personnel/Html5Game/js/JQuery.js",
@@ -192,6 +199,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -199,6 +207,18 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"gravity",
+			"speedX",
+			"draw",
+			"drawA",
+			"consol",
+			"console.log",
+			"cons",
+			"consol",
+			"cons",
+			"viewport",
+			"console.lo",
+			"setVi",
 			"viewPort",
 			"viewport",
 			"width",

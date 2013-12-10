@@ -99,15 +99,18 @@ function Character(game) {
 			}
 			else {
 
-				if( this.game.map.checkCollision(this.position.x, this.position.y + Math.ceil( GRAVITY_DOWN * this.speedY )) == false)
-				{					
+				if( this.game.map.checkCollision(this.position.x, this.position.y + Math.ceil( GRAVITY_DOWN * this.speedY )) === false)
+				{
 					this.speedY = Math.floor( GRAVITY_DOWN * this.speedY );
 					this.moveByY(this.speedY);
 				}
 				else
-				{
-					var tile = this.game.map.checkCollision(this.position.x, this.position.y + Math.ceil( 1.15 * this.speedY ));
-					this.moveByY( ( ( tile.y + 1 ) * TILE_SIZE) - this.position.y);
+				{	
+					
+					console.log('Stop here');
+
+//					var tile = this.game.map.checkCollision(this.position.x, this.position.y + Math.ceil( 1.15 * this.speedY ));
+//					this.moveByY( ( ( tile.y + 1 ) * TILE_SIZE) - this.position.y);
 					
 					this.speedY = 'none';
 				}
