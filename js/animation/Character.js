@@ -1,66 +1,67 @@
-include('maps/Mapper');
+define(['maps/Mapper', 'maps/Tile', 'maps/Position'], function(Mapper, Tile, Position) {
 
-function Character(game) {
+	function Character(game) {
 
-	// Attributs
-	this.name = 'mitch';
-	this.walkingStep = 1;
-	
-	this.game = game;
-	
-	this.position;
-	
-	this.speedX = 0;
-	this.speedY = 'none';
-
-	this.characterTile = initTile(this);
-
-	// Constructor
-	function initTile(character) {
-
-		var tiles = [];
-
-		for (var i = 1; i <= 11; i++) {
-
-			var imgName = "";
-
-			if( i < 10)
-				imgName = "walk0" + i;
-			else
-				imgName = "walk" + i;
-
-			var img = new Image();
-			img.src = 'assets/character/' + character.name + '/' + imgName + '.png';
-
-			tiles[i] = new Tile(img);
-
-			img.onload = tiles[i].tileLoaded();
-
-		}
+		// Attributs
+		this.name = 'mitch';
+		this.walkingStep = 1;
 		
-		return tiles;
+		this.game = game;
+		
+		this.position;
+		
+		this.speedX = 0;
+		this.speedY = 'none';
+
+		this.characterTile = initTile(this);
+
+		// Constructor
+		function initTile(character) {
+
+			var tiles = [];
+
+			for (var i = 1; i <= 11; i++) {
+
+				var imgName = "";
+
+				if( i < 10)
+					imgName = "walk0" + i;
+				else
+					imgName = "walk" + i;
+
+				var img = new Image();
+				img.src = 'assets/character/' + character.name + '/' + imgName + '.png';
+
+				tiles[i] = new Tile(img);
+
+				img.onload = tiles[i].tileLoaded();
+
+			}
+			
+			return tiles;
+		}
+
 	}
 
-	
-	this.setPosition = function(x, y) {
+	Character.prototype.setPosition = function(x, y) {
 		this.position = new Position(x, y);
 	}
 	
-	this.moveByY = function(y) {
+	Character.prototype.moveByY = function(y) {
 		this.position.y += y;
 	}
 	
-	this.moveByX = function(x) {
+	Character.prototype.moveByX = function(x) {
 		this.position.x += x;
 	}
 		
-	this.jump = function() {
+	Character.prototype.jump = function() {
 		
 		if(this.speedY == 'none')
 			this.speedY = JUMP;
 	}
 	
-	this.moveRight = function() {
+	Character.prototype.moveRight = function() {
 
  		if( this.speedX >= 0 )
 			this.speedX = SPEED_X;
@@ -69,23 +70,23 @@ function Character(game) {
 
 	}
 
-	this.moveLeft = function() {
+	Character.prototype.moveLeft = function() {
 
 		if( Math.abs(this.speedX) < MAX_SPEED && this.speedX <= 0 )
 			this.speedX = - 1 * SPEED_X;
 			
 	}
 
-	this.slow = function() {
+	Character.prototype.slow = function() {
 		this.slowing = true;
 	}
 	
-	this.stop = function() {
+	Character.prototype.stop = function() {
 		this.speedX = 0;
 		this.stoppingStep();
 	}
 	
-	this.move = function() {
+	Character.prototype.move = function() {
 
 		// Vertical movement
 		if(this.speedY != 'none') {
@@ -138,24 +139,27 @@ function Character(game) {
 
 	}
 
-}
 
-Character.prototype.draw = function() {	
+	Character.prototype.draw = function() {	
 
-	var vp = Viewport.getInstance();
-	this.characterTile[this.walkingStep].drawAt(this.position.x, this.position.y, true);
-}
+		var vp = Viewport.getInstance();
+		this.characterTile[this.walkingStep].drawAt(this.position.x, this.position.y, true);
+	}
 
-Character.prototype.stoppingStep = function() {
-	this.walkingStep = 1;
-}
-
-Character.prototype.jumpingStep = function() {
-}
-
-Character.prototype.nextWalkingStep = function(){
-	if( this.walkingStep < 11 )
-		this.walkingStep++;
-	else
+	Character.prototype.stoppingStep = function() {
 		this.walkingStep = 1;
-}
+	}
+
+	Character.prototype.jumpingStep = function() {
+	}
+
+	Character.prototype.nextWalkingStep = function(){
+		if( this.walkingStep < 11 )
+			this.walkingStep++;
+		else
+			this.walkingStep = 1;
+	}
+
+	return Character;
+
+});

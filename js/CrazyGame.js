@@ -52,3 +52,40 @@ function include(file) {
 	var url = 'js/' + file + '.js';	
 	$('#javascript').append('<script src="' + url + '"></script>');
 }
+
+/**
+	Main : Init the game
+*/
+define('CrazyGame', ['CONFIG', 'maps/Mapper', 'animation/Character'], function(CONFIG, Mapper, Character) {
+
+	function CrazyGame(lvl) {
+		this.lvl = lvl;
+		this.map = null;
+	}
+
+	CrazyGame.prototype.start = function() {
+		this.initMap();
+		this.setCharacters();
+	}
+
+	CrazyGame.prototype.initMap = function() {
+		var data = Mapper.loadMap(this.lvl);
+		this.map = Mapper.createMap(data);
+	}
+
+	CrazyGame.prototype.setCharacters = function() {
+	
+		var initPos = Mapper.getInitialPosition(this.lvl);
+		
+		this.character = new Character(this);
+		this.character.setPosition( CONFIG.TILE_SIZE * initPos.x, CONFIG.TILE_SIZE * initPos.y);
+
+		var chars = new Array();
+		chars.push(this.character);
+
+		this.map.setCharacters(chars);
+	}
+
+	return CrazyGame;
+
+});
