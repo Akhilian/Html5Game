@@ -2,8 +2,7 @@
 *	Singleton pattern to describe the @Viewport
 *	@version 0.1
 */
-
-var Viewport = (function() {
+define(['CONFIG'], function(CONFIG) {
 
 	var viewportInstance;
 
@@ -12,8 +11,8 @@ var Viewport = (function() {
 		var viewPort = {
 			x : 0,
 			y : 0,  
-			width : CANVAS.width(),
-			height : CANVAS.height()
+			width : CONFIG.CANVAS.width(),
+			height : CONFIG.CANVAS.height()
 		};
 
 		function privateSetX(x) {
@@ -44,4 +43,4 @@ var Viewport = (function() {
 		}
 	};
 
-})();
+});

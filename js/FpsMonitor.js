@@ -1,40 +1,42 @@
-var FpsMonitor = {
+define('FpsMonitor', ['CONFIG', 'Stats'], function(CONFIG, Stats) {
 
-	// Set FPS Monitor environment
-	init : function() {
+	return {
 
-		this.fpsMonitor = new Stats();
-		this.fpsMonitor.setMode(0);
+		// Set FPS Monitor environment
+		init : function() {
 
-		this.fpsMonitor.domElement.style.position = 'absolute';
-		this.fpsMonitor.domElement.style.left = '0px';
-		this.fpsMonitor.domElement.style.top = '0px';
+			this.fpsMonitor = new Stats();
+			this.fpsMonitor.setMode(0);
 
-		document.body.appendChild( this.fpsMonitor.domElement );
+			this.fpsMonitor.domElement.style.position = 'absolute';
+			this.fpsMonitor.domElement.style.left = '0px';
+			this.fpsMonitor.domElement.style.top = '0px';
 
-	},
+			document.body.appendChild( this.fpsMonitor.domElement );
 
-	begin : function() {
+		},
 
-		if( DISPLAY_FPS_MONITOR )
-		{
-			if( this.fpsMonitor != undefined )
-				this.fpsMonitor.begin();
-			else
-				throw "Please set up the monitor by calling FpsMonitor.init() first.";
-		}
-	},
+		begin : function() {
 
-	end : function() {
+			if( CONFIG.DISPLAY_FPS_MONITOR )
+			{
+				if( this.fpsMonitor != undefined )
+					this.fpsMonitor.begin();
+				else
+					throw "Please set up the monitor by calling FpsMonitor.init() first.";
+			}
+		},
 
-		if( DISPLAY_FPS_MONITOR )
-		{
-			if ( this.fpsMonitor != undefined )
-				this.fpsMonitor.end();
-			else
-				throw "Please set up the monitor by calling FpsMonitor.init() first.";
+		end : function() {
+
+			if( CONFIG.DISPLAY_FPS_MONITOR )
+			{
+				if ( this.fpsMonitor != undefined )
+					this.fpsMonitor.end();
+				else
+					throw "Please set up the monitor by calling FpsMonitor.init() first.";
+			}
 		}
 	}
 
-
-}
+})

@@ -1,4 +1,4 @@
-define(["./Tile"], function(Tile) {
+define(["CONFIG", "./Tile"], function(CONFIG, Tile) {
 
 	function Map() {
 
@@ -101,7 +101,7 @@ define(["./Tile"], function(Tile) {
 	};
 
 	Map.prototype.clean = function() {
-		CONTEXT.clearRect(0,0, CANVAS.width(), CANVAS.height());
+		CONFIG.CONTEXT.clearRect(0,0, CONFIG.CANVAS.width(), CONFIG.CANVAS.height());
 	}
 
 	Map.prototype.checkCollision = function(posX, posY) {

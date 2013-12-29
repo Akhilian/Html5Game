@@ -1,3 +1,4 @@
+/*
 include('CONFIG');
 include('maps/Position');
 include('maps/Tile');
@@ -5,6 +6,7 @@ include('maps/Tileset');
 include('maps/Mapper');
 include('animation/Character');
 include('Control');
+*/
 
 /**
 	Main : Init the game
@@ -48,15 +50,17 @@ function CrazyGame() {
 // Miscellaneous
 // ------------------------
 
+/*
 function include(file) {
 	var url = 'js/' + file + '.js';	
 	$('#javascript').append('<script src="' + url + '"></script>');
 }
+*/
 
 /**
 	Main : Init the game
 */
-define('CrazyGame', ['CONFIG', 'maps/Mapper', 'animation/Character'], function(CONFIG, Mapper, Character) {
+define('CrazyGame', ['CONFIG', 'maps/Mapper', 'animation/Character', 'ControlManager'], function(CONFIG, Mapper, Character, ControlManager) {
 
 	function CrazyGame(lvl) {
 		this.lvl = lvl;
@@ -66,6 +70,7 @@ define('CrazyGame', ['CONFIG', 'maps/Mapper', 'animation/Character'], function(C
 	CrazyGame.prototype.start = function() {
 		this.initMap();
 		this.setCharacters();
+		this.initControlManager();
 	}
 
 	CrazyGame.prototype.initMap = function() {
@@ -84,6 +89,16 @@ define('CrazyGame', ['CONFIG', 'maps/Mapper', 'animation/Character'], function(C
 		chars.push(this.character);
 
 		this.map.setCharacters(chars);
+	}
+
+	/**
+	 *	Initializing the control manager.
+	 */
+	CrazyGame.prototype.initControlManager = function() {
+		
+		var controler = new ControlManager(this);
+		controler.start();
+
 	}
 
 	return CrazyGame;

@@ -1,4 +1,4 @@
-define(['maps/Mapper', 'maps/Tile', 'maps/Position'], function(Mapper, Tile, Position) {
+define(['maps/Mapper', 'maps/Tile', 'maps/Position', 'maps/Viewport'], function(Mapper, Tile, Position, Viewport) {
 
 	function Character(game) {
 

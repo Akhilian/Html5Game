@@ -1,4 +1,4 @@
-define([], function() {
+define(['CONFIG'], function(CONFIG) {
 
 	function Tile(img) {
 	
@@ -9,21 +9,21 @@ define([], function() {
 		// Methodes
 		this.drawAt = function(x, y, convert) {
 
-			var height = CANVAS.height(),
-				width = CANVAS.width();
+			var height = CONFIG.CANVAS.height(),
+				width = CONFIG.CANVAS.width();
 
 			if(convert == undefined){
 				
-				CONTEXT.drawImage(
+				CONFIG.CONTEXT.drawImage(
 					this.imgSrc,
-					TILE_SIZE * x,
-					height - TILE_SIZE * ( y )
+					CONFIG.TILE_SIZE * x,
+					height - CONFIG.TILE_SIZE * ( y )
 				);
 
 			}
 			else
 			{
-				CONTEXT.drawImage(
+				CONFIG.CONTEXT.drawImage(
 					this.imgSrc,
 					x,
 					height - y - ( this.imgSrc.height )
