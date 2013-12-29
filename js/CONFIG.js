@@ -5,8 +5,6 @@ define(['jquery'], function($) {
 		canv2DContext = element.getContext('2d');
 	});
 
-	console.log();
-
 	return {
 			// Image per second
 			FRAME_RATE : 40,
