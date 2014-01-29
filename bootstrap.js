@@ -3,14 +3,14 @@ require.config({
 	baseUrl: "js/",
 
 	paths: {
-		"jquery" : '../tools/jquery',
-		"Stats" : '../tools/Stats'
+		"jquery" : '../vendor/jquery',
+		"Stats" : '../vendor/Stats'
 	},
 
 	packages: [
 		{
 			name: 'physicsjs',
-			location: '../tools/physicsjs',
+			location: '../vendor/physicsjs',
 			main: 'physicsjs-0.5.3.min'	
 		}
 	],
@@ -21,5 +21,5 @@ require.config({
 		}
 	},
 
-	deps: ["start"]
+	deps: ["Start"]
 });
