@@ -1,4 +1,4 @@
-define(["animation/Camera", "FpsMonitor", "maps/Viewport"], function(Camera, FpsMonitor, Viewport) {
+define(["view/Camera", "FpsMonitor", "maps/Viewport"], function(Camera, FpsMonitor, Viewport) {
 
 	function Renderer(character, map) {
 
@@ -17,7 +17,11 @@ define(["animation/Camera", "FpsMonitor", "maps/Viewport"], function(Camera, Fps
 			
 		// Bind Renderer object to the render function.
 		// It allows manipulation of the fps monitor
-		var rend = render.bind(this);
+		//var rend = render.bind(this);
+
+		this.camera.draw();
+
+/*
 		window.requestAnimationFrame(rend);
 
 		function render() {
@@ -25,17 +29,18 @@ define(["animation/Camera", "FpsMonitor", "maps/Viewport"], function(Camera, Fps
 			FpsMonitor.begin();
 
 			// Clean and render the game
-			this.map.clean();
-			this.character.move();
+			//this.map.clean();
+			//this.character.move();
 			//this.map.draw();
 
-			this.camera.draw();
+			//this.camera.draw();
 
 			FpsMonitor.end();
 
 			var rend = render.bind(this);
 			window.requestAnimationFrame(rend);
 		};
+*/
 	}
 
 	return Renderer;
