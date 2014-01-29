@@ -5,15 +5,18 @@ define('FpsMonitor', ['CONFIG', 'Stats'], function(CONFIG, Stats) {
 		// Set FPS Monitor environment
 		init : function() {
 
-			this.fpsMonitor = new Stats();
-			this.fpsMonitor.setMode(0);
+			if(CONFIG.DISPLAY_FPS_MONITOR) {
 
-			this.fpsMonitor.domElement.style.position = 'absolute';
-			this.fpsMonitor.domElement.style.left = '0px';
-			this.fpsMonitor.domElement.style.top = '0px';
+				this.fpsMonitor = new Stats();
+				this.fpsMonitor.setMode(0);
 
-			document.body.appendChild( this.fpsMonitor.domElement );
+				this.fpsMonitor.domElement.style.position = 'absolute';
+				this.fpsMonitor.domElement.style.left = '0px';
+				this.fpsMonitor.domElement.style.top = '0px';
 
+				document.body.appendChild( this.fpsMonitor.domElement );
+
+			}
 		},
 
 		begin : function() {
