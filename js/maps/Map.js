@@ -1,4 +1,4 @@
-define(["CONFIG", "./Tile"], function(CONFIG, Tile) {
+define(["CONFIG", "view/Tile"], function(CONFIG, Tile) {
 
 	function Map() {
 

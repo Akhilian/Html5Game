@@ -1,4 +1,4 @@
-define('ControlManager', ["animation/Renderer"], function(Renderer) {
+define('ControlManager', ["view/Renderer"], function(Renderer) {
 
 	function ControlManager(gameInstance) {
 
