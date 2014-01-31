@@ -23,7 +23,7 @@ define('FpsMonitor', ['CONFIG', 'Stats'], function(CONFIG, Stats) {
 
 			if( CONFIG.DISPLAY_FPS_MONITOR )
 			{
-				if( this.fpsMonitor != undefined )
+				if( this.fpsMonitor !== undefined )
 					this.fpsMonitor.begin();
 				else
 					throw "Please set up the monitor by calling FpsMonitor.init() first.";
@@ -34,12 +34,12 @@ define('FpsMonitor', ['CONFIG', 'Stats'], function(CONFIG, Stats) {
 
 			if( CONFIG.DISPLAY_FPS_MONITOR )
 			{
-				if ( this.fpsMonitor != undefined )
+				if ( this.fpsMonitor !== undefined )
 					this.fpsMonitor.end();
 				else
 					throw "Please set up the monitor by calling FpsMonitor.init() first.";
 			}
 		}
-	}
+	};
 
-})
+});

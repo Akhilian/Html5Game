@@ -1,9 +1,10 @@
 define('ControlManager', ["view/Renderer"], function(Renderer) {
 
+
 	function ControlManager(gameInstance) {
 
 		this.game = gameInstance;
-		this.renderer;
+		this.renderer = undefined;
 	}
 
 	ControlManager.prototype.start = function() {
@@ -42,8 +43,8 @@ define('ControlManager', ["view/Renderer"], function(Renderer) {
 				
 			});
 		
-		}
+		};
 
 	return ControlManager;
 
-})
+});

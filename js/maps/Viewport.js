@@ -29,9 +29,9 @@ define(['CONFIG'], function(CONFIG) {
 			setX : function(x) {
 				privateSetX(x);
 			}
-		}
+		};
 
-	};
+	}
 
 	return {
 		getInstance : function() {

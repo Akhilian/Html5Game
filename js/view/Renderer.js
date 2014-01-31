@@ -41,7 +41,7 @@ define(["view/Camera", "FpsMonitor", "maps/Viewport"], function(Camera, FpsMonit
 			window.requestAnimationFrame(rend);
 		};
 */
-	}
+	};
 
 	return Renderer;
 

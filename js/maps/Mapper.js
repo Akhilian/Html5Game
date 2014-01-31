@@ -46,5 +46,5 @@ define(['./Map'], function(Map){
 			
 			return position;
 		}
-	}
+	};
 });

@@ -26,94 +26,97 @@ define(['CONFIG', 'maps/Viewport',
 
 		Physics(function(world){
     
-		    var viewWidth = window.innerWidth;
-		    var viewHeight = window.innerHeight;
-		    
-		    var renderer = Physics.renderer('canvas', {
-		        el: 'viewport',
-		        width: viewWidth,
-		        height: viewHeight,
-		        meta: false, // don't display meta data
-		        styles: {
-		            // set colors for the circle bodies
-		            'circle' : {
-		                strokeStyle: 'hsla(60, 37%, 17%, 1)',
-		                lineWidth: 1,
-		                fillStyle: 'hsla(60, 37%, 57%, 0.8)',
-		                angleIndicator: 'hsla(60, 37%, 17%, 0.4)'
-		            }
-		        }
-		    });
-		    
-		    // add the renderer
-		    world.add( renderer );
-		    // render on each step
-		    world.subscribe('step', function(){
-		        world.render();
-		    });
-		    
-		    // bounds of the window
-		    var viewportBounds = Physics.aabb(0, 0, viewWidth, viewHeight);
-		    
-		    // constrain objects to these bounds
-		    world.add(Physics.behavior('edge-collision-detection', {
-		        aabb: viewportBounds,
-		        restitution: 0.99,
-		        cof: 0.99
-		    }));
-		    
-		    Physics.body('wheel', 'circle', function( parent ){
-		        
-		        return {
-		            // no need for an init
-		            
-		            // spin the wheel at desired speed
-		            spin: function( speed ){
-		                // the wheels are spinning...
-		                this.state.angular.vel = speed;
-		            }
-		        };
-		    });
-		    
-		    var myWheel = Physics.body('wheel', {
-		        x: 40,
-		        y: 30,
-		        radius: 60
-		    });
-		    
-		    world.add( myWheel );
-		    
-		    // for example, use jquery to listen for a button click, and spin the wheel on the next step
-		    $('button').on('click', function(){
-		        // wait for the next step before spinning the wheel
-		        world.subscribe('step', function( data ){
-		            myWheel.spin( 0.03 );
-		            // only execute callback once
-		            world.unsubscribe( 'step', data.handler );
-		        });
-		    });
-		    
-		    // ensure objects bounce when edge collision is detected
-		    world.add( Physics.behavior('body-impulse-response') );
-		    
-		    // add some gravity
-		    world.add( Physics.behavior('constant-acceleration') );
-		    
-		    // subscribe to ticker to advance the simulation
-		    Physics.util.ticker.subscribe(function( time, dt ){
-		        
-		        world.step( time );
-		    });
-		    
-		    // start the ticker
-		    Physics.util.ticker.start();
-		    
+			var viewWidth = window.innerWidth;
+			var viewHeight = window.innerHeight;
+
+			var renderer = Physics.renderer('canvas', {
+				el: 'viewport',
+				width: viewWidth,
+				height: viewHeight,
+				meta: false, // don't display meta data
+				styles: {
+					// set colors for the circle bodies
+					'circle' : {
+						strokeStyle: 'hsla(60, 37%, 17%, 1)',
+						lineWidth: 1,
+						fillStyle: 'hsla(60, 37%, 57%, 0.8)',
+						angleIndicator: 'hsla(60, 37%, 17%, 0.4)'
+					}
+				}
+			});
+
+			// add the renderer
+			world.add( renderer );
+			// render on each step
+			world.subscribe('step', function(){
+				world.render();
+			});
+
+			// bounds of the window
+			var viewportBounds = Physics.aabb(0, 0, viewWidth+200, viewHeight+200);
+
+			// constrain objects to these bounds
+			world.add(Physics.behavior('edge-collision-detection', {
+				aabb: viewportBounds,
+				restitution: 0.99,
+				cof: 0.99
+			}));
+
+			Physics.body('wheel', 'circle', function( parent ){
+
+				return {
+					// no need for an init
+
+					// spin the wheel at desired speed
+					spin: function( speed ){
+						// the wheels are spinning...
+						this.state.angular.vel = speed;
+					}
+				};
+			});
+
+			var myWheel = Physics.body('wheel', {
+				x: 40,
+				y: 30,
+				radius: 60,
+				vx: 0.3,
+				angularVelocity:0.03
+			});
+
+			world.add( myWheel );
+
+			// for example, use jquery to listen for a button click, and spin the wheel on the next step
+			$('button').on('click', function(){
+				// wait for the next step before spinning the wheel
+				world.subscribe('step', function( data ){
+					myWheel.spin( 0.03 );
+					// only execute callback once
+					world.unsubscribe( 'step', data.handler );
+				});
+			});
+
+			// ensure objects bounce when edge collision is detected
+			world.add( Physics.behavior('body-impulse-response') );
+
+			// add some gravity
+			world.add( Physics.behavior('constant-acceleration') );
+
+			// subscribe to ticker to advance the simulation
+			Physics.util.ticker.subscribe(function( time, dt ){
+				world.step( time );
+			});
+
+			// start the ticker
+			Physics.util.ticker.start();
+
 		});
 
+		/*
 		for(var i = 0; i < this.map.mapRaw.field.length; i++) {
 			var item = this.map.mapRaw.field[i];
 			console.log(this.map.tiles[item.type]);
 		}
+		*/
 
 
 

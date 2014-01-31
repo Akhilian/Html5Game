@@ -3,8 +3,8 @@ function Life() {
 }
 
 Life.prototype.isDead = function() {
-	return  !(this.currentHealthPoints >= 1);
-}
+	return  (this.currentHealthPoints < 0);
+};
 
 Life.prototype.recoverHealth = function(HPAmount) {
 
@@ -21,9 +21,9 @@ Life.prototype.recoverHealth = function(HPAmount) {
 		}
 		else {
 			this.currentHealthPoints += HPAmount;
-			success true;
+			success = true;
 		}
 	}
 
 	return success;
-}
+};
