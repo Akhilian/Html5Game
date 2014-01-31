@@ -1,0 +1,4 @@
+Linting js/CrazyGame.js ...[31mERROR[39m
+[31m[[39m[33mL28[39m[31m:[39m[33mC6[39m[31m][39m [33mW033[39m[31m:[39m [33mMissing semicolon.[39m
+  }[31m[7m [27m[39m
+
