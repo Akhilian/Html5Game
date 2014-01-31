@@ -32,4 +32,5 @@ module.exports = function(grunt) {
 
 	//Default task
 	grunt.registerTask('default', ['clean:qa', 'jshint']);
+	grunt.registerTask('qa', ['jshint']);
 };

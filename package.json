@@ -4,7 +4,7 @@
   "description": "A funny 2D plateform game created using HTML5, PhysicsJS, Grunt, RequireJS and Node. This lovely game is intended to be a multiplayer one.",
   "main": "bootstrap.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt qa"
   },
   "repository": {
     "type": "git",
