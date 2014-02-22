@@ -21,5 +21,5 @@ require.config({
 		}
 	},
 
-	deps: ["Start"]
+	deps: ["Start", "model/Life"]
 });
