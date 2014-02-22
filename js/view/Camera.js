@@ -10,21 +10,19 @@ define(['CONFIG', 'maps/Viewport',
 			'physicsjs',
 			'physicsjs/renderers/canvas',
 			'physicsjs/bodies/circle',
+			'model/Block',
 			'physicsjs/behaviors/constant-acceleration',
 			'physicsjs/behaviors/edge-collision-detection',
 			'physicsjs/behaviors/body-impulse-response'], function(CONFIG, Viewport, require, Physics) {
 
 	function Camera(map, character) {
-
 		this.map = map;
 		this.character = character;
-
-		console.log(this.map);
 	}
 
 	Camera.prototype.draw = function() {
 
-		Physics(function(world){
+		var world = Physics(function(world){
     
 			var viewWidth = window.innerWidth;
 			var viewHeight = window.innerHeight;
@@ -75,6 +73,8 @@ define(['CONFIG', 'maps/Viewport',
 				};
 			});
 
+
+
 			var myWheel = Physics.body('wheel', {
 				x: 40,
 				y: 30,
@@ -84,6 +84,7 @@ define(['CONFIG', 'maps/Viewport',
 			});
 
 			world.add( myWheel );
+			
 
 			// for example, use jquery to listen for a button click, and spin the wheel on the next step
 			$('button').on('click', function(){
@@ -159,8 +160,29 @@ define(['CONFIG', 'maps/Viewport',
 
 		Viewport.getInstance().setX(viewport.x);
 		*/
+	
+	var block;
+
+	console.log(this);
+
+	for(var i = 0; i < this.map.mapRaw.field.length; i++) {
+
+		var item = this.map.mapRaw.field[i],
+			imgTile = this.map.tiles[item.type];
+
+			//imgTile.drawAt((item.x * CONFIG.TILE_SIZE) - viewport.x, (item.y * CONFIG.TILE_SIZE) - viewport.y, true);
+			
+			block = Physics.body('block', {
+				x: item.x * 70,
+				y: item.y * 70
+			});
+
+			world.add(block);
+	}
 
 	};
+
+
 	
 	return Camera;
 

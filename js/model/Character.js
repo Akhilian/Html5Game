@@ -1,4 +1,4 @@
-define(['maps/Mapper', 'view/Tile', 'maps/Position', 'maps/Viewport'], function(Mapper, Tile, Position, Viewport) {
+define(['maps/Mapper', 'view/Tile', 'maps/Position', 'maps/Viewport', 'model/Life'], function(Mapper, Tile, Position, Viewport, Life) {
 
 	function Character(game) {
 
@@ -7,6 +7,7 @@ define(['maps/Mapper', 'view/Tile', 'maps/Position', 'maps/Viewport'], function(
 		this.walkingStep = 1;
 		
 		this.game = game;
+		this.life = new Life();
 		
 		this.position = undefined;
 		
