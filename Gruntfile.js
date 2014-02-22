@@ -1,4 +1,5 @@
 module.exports = function(grunt) {
+	'use strict';
 
 	// Project configuration
 	grunt.initConfig({
@@ -10,12 +11,28 @@ module.exports = function(grunt) {
 				src: ["build/release/*"]
 			},
 			qa: {
-				src: ["build/report/*"]
+				src: ["build/report/*", '_SpecRunner.html']
 			}
 		},
 
 		jshint: {
-			files: ['./*.js', 'js/*']
+			files: ['./*.js', 'js/*', 'test/*']
+		},
+
+		jasmine: {
+			model:{
+				src: 'js/model/List.js',
+				options: {
+					specs: 'test/model/LifeTest.js',
+					template: require('grunt-template-jasmine-requirejs'),
+					templateOptions: {
+						requireConfigFile: 'bootstrap.js',
+						requireConfig: {
+							baseUrl: 'js'
+						}
+					}
+				}
+			}
 		},
 
 		watch: {
@@ -29,8 +46,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-jasmine');
+
 
 	//Default task
 	grunt.registerTask('default', ['clean:qa', 'jshint']);
-	grunt.registerTask('qa', ['jshint']);
+	grunt.registerTask('qa', ['jshint', 'jasmine:model', 'clean:qa']);
 };
