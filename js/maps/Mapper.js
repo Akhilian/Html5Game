@@ -4,7 +4,7 @@ define(['./Map'], function(Map){
 
 		loadMap : function(lvl) {
 			
-			var url = 'js/maps/json/map' + lvl + '.json';
+			var url = 'js/maps/json/lvl' + lvl + '.json';
 			var data;
 		
 			$.ajax({
@@ -14,8 +14,7 @@ define(['./Map'], function(Map){
 				success: function(d) {
 					data = d;
 				}
-			});
-			
+			});			
 			return data;
 		},
 
@@ -24,7 +23,13 @@ define(['./Map'], function(Map){
 			$('#map').attr('width', $(window).width());
 			$('#map').attr('height', $(window).height());
 			
-			var map = new Map();
+			var map = new Map(),
+				monitor = map.getLoadingMonitor();
+
+			monitor.progress(function(message) {
+				console.log('Loading message : ' + message + "%");
+			});
+
 			map.setRawData(data);
 			
 			return map;
